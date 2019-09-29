@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void display(Scanner sc) {
+    public static void customer_menu(Scanner sc) {
 
         int ch = 0;
         for (;;) {
@@ -37,6 +37,42 @@ public class Menu {
         }
 
     }
+    
+    public static void employee_menu(Scanner sc) {
+
+        int ch = 0;
+        for (;;) {
+            System.out.println("******************Employee Menu*****************");
+            System.out.println("\t 1. Add a Customer");
+            System.out.println("\t 2. Modify Customer Details");
+            System.out.println("\t 3. Remove a Customer");
+            System.out.println("\t 4. Back to Main Menu");
+            System.out.println("*************************************************");
+            System.out.print("Enter your choice :- ");
+
+            ch = Integer.parseInt(sc.nextLine());
+            switch (ch) {
+            case 1:
+                System.out.println("Add customer here");
+                break;
+            case 2:
+                System.out.println("modify customer here");
+                break;
+            case 3:
+                System.out.println("remove a customer here");
+                break;
+            case 4:
+
+                return;
+
+            default:
+                System.out.println("Wrong choice!!!");
+
+            }
+
+        }
+
+    }
 
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
@@ -54,11 +90,11 @@ public class Menu {
             switch (choice) {
             case 1:
 
-                display(sc);
+                customer_menu(sc);
 
                 break;
             case 2:
-                System.out.println("Employee Menu");
+                employee_menu(sc);
                 break;
             case 3:
                 System.out.println("Exit Menu");
