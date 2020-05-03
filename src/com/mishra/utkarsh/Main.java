@@ -1,14 +1,11 @@
 package com.mishra.utkarsh;
 
 import java.util.Scanner;
-
 public class Main extends Menu {
 
     public static void main(String[] args) {
-        // write your code here
 
         Scanner sc = new Scanner(System.in);
-        int choice;
         while (true) {
             System.out.println("******************Savvy Banking App*****************");
             System.out.println("\t 1. Customer Menu");
@@ -16,10 +13,8 @@ public class Main extends Menu {
             System.out.println("\t 3. Exit App");
             System.out.println("****************************************************");
             System.out.print("Enter your choice :- ");
-
-            choice = Integer.parseInt(sc.nextLine());
-
-            switch (choice) {
+            ch = getNumber(sc);
+            switch (ch) {
                 case 1:
 
                     customer_menu(sc);

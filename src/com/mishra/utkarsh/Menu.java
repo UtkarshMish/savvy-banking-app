@@ -8,6 +8,18 @@ public class Menu {
     static int pin;
     static int ch;
 
+    static int getNumber(Scanner sc) {
+        while (true)
+            try {
+                ch = Integer.parseInt(sc.nextLine());
+                return ch;
+            } catch (NumberFormatException exception) {
+                System.out.println("Enter a Valid Number !!! ");
+
+            }
+
+    }
+
     public static void customer_menu(Scanner sc) {
 
         for (; ; ) {
@@ -18,8 +30,8 @@ public class Menu {
             System.out.println("\t 4. Back to Main Menu");
             System.out.println("*************************************************");
             System.out.print("Enter your choice :- ");
+            ch = getNumber(sc);
 
-            ch = Integer.parseInt(sc.nextLine());
             switch (ch) {
                 case 1:
                     System.out.println("Account Menu");
@@ -54,7 +66,7 @@ public class Menu {
             System.out.println("*************************************************");
             System.out.print("Enter your choice :- ");
 
-            ch = Integer.parseInt(sc.nextLine());
+            ch = getNumber(sc);
             switch (ch) {
                 case 1:
                     System.out.println("Add customer here");
