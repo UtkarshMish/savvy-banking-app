@@ -1,2 +1,6 @@
 .idea
 .vscode
+
+#employee and customer files
+employee.txt
+customers.txt
