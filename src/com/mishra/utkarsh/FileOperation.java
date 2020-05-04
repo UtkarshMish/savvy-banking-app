@@ -17,9 +17,9 @@ protected static long getAccount(int mode) throws FileNotFoundException {
 		if (line.get().length() != 0) {
 			String[] customer_details = line.get().split("\\|\\|");
 			long accountNumber = Long.parseLong(customer_details[0]);
-
 			fileReader.close();
-			return accountNumber+1;
+			System.gc();
+			return accountNumber + 1;
 		}
 	} else return 10_000_000;
 	return -1;
@@ -39,9 +39,12 @@ protected static void write_to_file(
 			String employee_data = String.format("%d||%d||%s||%s", Number, PIN, name, address);
 			out.write(employee_data);
 			out.newLine();
+			out.flush();
 			out.close();
 			writer.close();
 			System.out.println("accountNo: " + Number);
+			System.gc();
+
 		}
 	} catch (IOException e) {
 		System.out.println("Error :" + e.getMessage());
