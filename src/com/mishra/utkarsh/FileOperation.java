@@ -11,14 +11,15 @@ private static final String[] FILENAMES = {"./customers.txt", "./employee.txt"};
 protected static long getAccount(int mode) throws FileNotFoundException {
 	AtomicReference<String> line = new AtomicReference<>("");
 	var file = new File(FILENAMES[mode]);
-	if (!file.exists()) {
+	if (file.exists()) {
 		var fileReader = new Scanner(file);
 		while (fileReader.hasNextLine()) line.set(fileReader.nextLine());
 		if (line.get().length() != 0) {
 			String[] customer_details = line.get().split("\\|\\|");
 			long accountNumber = Long.parseLong(customer_details[0]);
+
 			fileReader.close();
-			return accountNumber;
+			return accountNumber+1;
 		}
 	} else return 10_000_000;
 	return -1;
@@ -38,6 +39,7 @@ protected static void write_to_file(
 			String employee_data = String.format("%d||%d||%s||%s", Number, PIN, name, address);
 			out.write(employee_data);
 			out.newLine();
+			out.close();
 			writer.close();
 			System.out.println("accountNo: " + Number);
 		}

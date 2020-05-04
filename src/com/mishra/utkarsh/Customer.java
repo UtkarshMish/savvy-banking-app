@@ -52,7 +52,7 @@ protected void add_customer() throws FileNotFoundException {
 	Customer_address = sc.nextLine();
 	System.out.println("Customer PIN :");
 	PIN = Integer.parseInt(sc.nextLine());
-	accountNo = getAccount(1);
+	accountNo = getAccount(0);
 	if (accountNo != -1) {
 		write_to_file(0, accountNo, PIN, Customer_name, Customer_address);
 	}
