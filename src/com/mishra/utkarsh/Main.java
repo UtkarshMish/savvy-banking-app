@@ -31,7 +31,7 @@ static private boolean verifyUser(int mode) throws FileNotFoundException {
 		boolean exist = userDetails.exists();
 		if (mode == 1 && (!exist)) {
 			var employee = new Employee();
-			employee.add_employee(sc, FILENAMES[mode]);
+			employee.add_employee(FILENAMES[mode]);
 			return true;
 		} else if (exist) {
 			System.out.println("Enter your Account Number :");
@@ -66,7 +66,7 @@ public static void main(String[] args) throws FileNotFoundException {
 			case 1:
 				if (verifyUser(0)) {
 					var customer = new Customer();
-					customer.customer_menu(sc);
+					customer.customer_menu();
 					break;
 				}
 				System.out.println("Invalid DETAILS !!! Try Again !!!");
@@ -75,7 +75,7 @@ public static void main(String[] args) throws FileNotFoundException {
 			case 2:
 				if (verifyUser(1)) {
 					var employee = new Employee();
-					employee.employee_menu(sc);
+					employee.employee_menu();
 					break;
 
 				}

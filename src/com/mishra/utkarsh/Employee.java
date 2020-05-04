@@ -1,17 +1,14 @@
 package com.mishra.utkarsh;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
 
-public class Employee {
-private String Customer_name;
-private String Customer_address;
+import java.io.FileNotFoundException;
+
+public class Employee extends FileOperation {
+
 private int PIN;
 private final long accountNo = 10_000_000;
 
-public void employee_menu(Scanner sc) {
+public void employee_menu() throws FileNotFoundException {
 
 	for (; ; ) {
 		System.out.println("******************Employee Menu*****************");
@@ -25,8 +22,8 @@ public void employee_menu(Scanner sc) {
 		int ch = Integer.parseInt(sc.nextLine());
 		switch (ch) {
 			case 1:
-				add_customer(sc);
-				System.out.println(Customer_name);
+				var customer = new Customer();
+				customer.add_customer();
 				break;
 			case 2:
 				System.out.println("modify customer here");
@@ -47,18 +44,7 @@ public void employee_menu(Scanner sc) {
 
 }
 
-private void add_customer(Scanner sc) {
-	System.out.println("---------Enter the Customer info :------------");
-	System.out.print("Customer Name :");
-	Customer_name = sc.nextLine();
-	System.out.print("Customer Address :");
-	Customer_address = sc.nextLine();
-	System.out.println("Customer PIN :");
-	PIN = Integer.parseInt(sc.nextLine());
-
-}
-
-public void add_employee(Scanner sc, String filepath) {
+public void add_employee(String filepath) {
 	System.out.println("---------Enter the Employee info :------------");
 	System.out.print("Employee Name :");
 	String Employee_name = sc.nextLine();
@@ -66,19 +52,8 @@ public void add_employee(Scanner sc, String filepath) {
 	String Employee_address = sc.nextLine();
 	System.out.println("Employee PIN :");
 	PIN = Integer.parseInt(sc.nextLine());
-	var employees = new File(filepath);
-	try {
-		if (employees.createNewFile()) {
-			var writer = new FileWriter(filepath);
-			String employee_data = String.format("%d||%d||%s||%s", accountNo, PIN, Employee_name, Employee_address);
-			writer.write(employee_data);
-			writer.close();
-			System.out.println("accountNo: " + accountNo);
-
-		}
-	} catch (IOException e) {
-		System.out.println("Error :" + e.getMessage());
-	}
+	write_to_file(1, accountNo, PIN, Employee_name, Employee_address);
 }
+
 
 }
